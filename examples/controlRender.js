@@ -54,7 +54,7 @@ class Test extends React.Component {
             onBlur={() => console.log('blur')}
             controlRender={selectedValue => {
               // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-              return <div tabIndex={0}>{JSON.stringify(selectedValue)}</div>;
+              return JSON.stringify(selectedValue);
             }}
             showSearch={false}
           >
