@@ -1234,12 +1234,19 @@ class Select extends React.Component<Partial<ISelectProps>, ISelectState> {
       maxTagCount,
       showSearch,
       removeIcon,
+      controlRender,
     } = props;
     const maxTagPlaceholder = props.maxTagPlaceholder as (value: valueType) => string;
     const className = `${prefixCls}-selection__rendered`;
     // search input is inside topControlNode in single, multiple & combobox. 2016/04/13
     let innerNode: Array<JSX.Element | null> | null | JSX.Element = null;
-    if (isSingleMode(props)) {
+    if (controlRender) {
+      const preparedValue = value.map(singleValue => {
+        const { label, title } = this.getOptionInfoBySingleValue(singleValue);
+        return { label, title, value: singleValue };
+      });
+      innerNode = controlRender(preparedValue);
+    } else if (isSingleMode(props)) {
       let selectedValue: JSX.Element | null = null;
       if (value.length) {
         let showSelectedValue = false;

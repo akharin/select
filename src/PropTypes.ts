@@ -81,6 +81,7 @@ export interface ISelectProps {
   menuItemSelectedIcon: renderSelect;
   getPopupContainer: renderSelect;
   dropdownRender: (menu: any) => JSX.Element;
+  controlRender: (value: valueType) => JSX.Element;
   mode: 'multiple' | 'tags';
   backfill: boolean;
   dropdownAlign: any;
@@ -172,6 +173,7 @@ const SelectPropTypes = {
   removeIcon: PropTypes.node,
   menuItemSelectedIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   dropdownRender: PropTypes.func,
+  controlRender: PropTypes.func,
 };
 
 export default SelectPropTypes;
