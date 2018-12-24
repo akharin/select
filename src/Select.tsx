@@ -1479,7 +1479,7 @@ class Select extends React.Component<Partial<ISelectProps>, ISelectState> {
     //   }
     // }
     let extraSelectionProps = { ...dataOrAriaAttributeProps };
-    if (!isMultipleOrTagsOrCombobox(props)) {
+    if (!isMultipleOrTagsOrCombobox(props) || props.controlRender) {
       extraSelectionProps = {
         ...extraSelectionProps,
         onKeyDown: this.onKeyDown,
