@@ -90,6 +90,7 @@ export interface ISelectProps {
   dropdownMenuStyle: React.CSSProperties;
   notFoundContent: string | false;
   tabIndex: string | number;
+  builtinPlacements: any;
 }
 
 function propsValueType(...args: [ISelectProps, string, string, any, any]) {
@@ -174,6 +175,7 @@ const SelectPropTypes = {
   menuItemSelectedIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
   dropdownRender: PropTypes.func,
   controlRender: PropTypes.func,
+  builtinPlacements: PropTypes.object,
 };
 
 export default SelectPropTypes;

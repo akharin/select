@@ -94,6 +94,7 @@ class Select extends React.Component<Partial<ISelectProps>, ISelectState> {
     autoClearSearchValue: true,
     tabIndex: 0,
     dropdownRender: (menu: any) => menu,
+    builtinPlacements: {},
   };
   public static getDerivedStateFromProps = (nextProps: ISelectProps, prevState: ISelectState) => {
     const optionsInfo = prevState.skipBuildOptionsInfo
@@ -1531,6 +1532,7 @@ class Select extends React.Component<Partial<ISelectProps>, ISelectState> {
         menuItemSelectedIcon={props.menuItemSelectedIcon}
         dropdownRender={props.dropdownRender}
         ariaId={this.ariaId}
+        builtinPlacements={props.builtinPlacements}
       >
         <div
           id={props.id}

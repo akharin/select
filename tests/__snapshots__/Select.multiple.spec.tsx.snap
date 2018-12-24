@@ -45,6 +45,7 @@ exports[`Select.multiple render render animation 1`] = `
 <SelectTrigger
   ariaId="test-uuid"
   backfillValue=""
+  builtinPlacements={Object {}}
   defaultActiveFirstOption={true}
   dropdownMatchSelectWidth={true}
   dropdownMenuStyle={Object {}}

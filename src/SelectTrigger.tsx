@@ -4,29 +4,11 @@ import Trigger from 'rc-trigger';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import DropdownMenu, { IDropdownMenuProps } from './DropdownMenu';
+import placements from './placements';
 import { renderSelect, valueType } from './PropTypes';
 import { isSingleMode, saveRef } from './util';
 
 Trigger.displayName = 'Trigger';
-
-const BUILT_IN_PLACEMENTS = {
-  bottomLeft: {
-    points: ['tl', 'bl'],
-    offset: [0, 4],
-    overflow: {
-      adjustX: 0,
-      adjustY: 1,
-    },
-  },
-  topLeft: {
-    points: ['bl', 'tl'],
-    offset: [0, -4],
-    overflow: {
-      adjustX: 0,
-      adjustY: 1,
-    },
-  },
-};
 
 export interface ISelectTriggerProps extends IDropdownMenuProps {
   onPopupFocus: () => void;
@@ -57,6 +39,7 @@ export interface ISelectTriggerProps extends IDropdownMenuProps {
   value: valueType;
   transitionName: string;
   animation: string;
+  builtinPlacements: any;
 }
 export interface ISelectTriggerState {
   dropdownWidth: number;
@@ -91,6 +74,7 @@ export default class SelectTrigger extends React.Component<
     menuItemSelectedIcon: PropTypes.oneOfType([PropTypes.func, PropTypes.node]),
     dropdownRender: PropTypes.func,
     ariaId: PropTypes.string,
+    builtinPlacements: PropTypes.object,
   };
 
   public saveDropdownMenuRef: (ref: any) => void;
@@ -186,6 +170,7 @@ export default class SelectTrigger extends React.Component<
       dropdownClassName,
       dropdownStyle,
       dropdownMatchSelectWidth,
+      builtinPlacements,
     } = props;
     const dropdownPrefixCls = this.getDropdownPrefixCls();
     const popupClassName = {
@@ -219,7 +204,7 @@ export default class SelectTrigger extends React.Component<
         hideAction={hideAction}
         ref={this.saveTriggerRef}
         popupPlacement="bottomLeft"
-        builtinPlacements={BUILT_IN_PLACEMENTS}
+        builtinPlacements={{ ...placements, ...builtinPlacements }}
         prefixCls={dropdownPrefixCls}
         popupTransitionName={this.getDropdownTransitionName()}
         onPopupVisibleChange={props.onDropdownVisibleChange}
